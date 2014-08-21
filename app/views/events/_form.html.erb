@@ -1,6 +1,6 @@
-<div class="row-fluid">
-  <div class="span6">
-    <%= nested_form_for @event do |f| %>
+<div class="row">
+  <div class="col-md-6">
+    <%= simple_nested_form_for @event do |f| %>
       <% if @event.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -16,12 +16,13 @@
 
 
       <div class="field">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= f.input :title, required: false %>
       </div>
 
       <div class="field">
-        <%= f.label :location_id %>
+        <div>
+          <%= f.label :location_id %>
+        </div>
         <%= collection_select(:event, :location_id, Location.all, :id, :name_with_chapter, :prompt => true) %>
         <p>
           <em>If your location isn't in this list, head over to the <%= link_to 'locations page', locations_path %> and add it before you continue.</em>
@@ -65,7 +66,9 @@
       </div>
 
       <div class="field workshop-only">
-        <%= f.label :course_id %>
+        <div>
+          <%= f.label :course_id %>
+        </div>
         <%= collection_select :event, :course_id, Course.all, :id, :title %>
       </div>
 
@@ -99,8 +102,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :time_zone %>
-        <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, include_blank: 'Select Time Zone' %>
+        <%= f.input :time_zone, priority: ActiveSupport::TimeZone.us_zones, include_blank: 'Select Time Zone', required: false %>
       </div>
 
       <div class='workshop-only'>
@@ -120,30 +122,25 @@
       </div>
 
       <div class="field workshop-only">
-        <%= f.label :student_rsvp_limit, 'Student RSVP limit' %>
-        <%= f.text_field :student_rsvp_limit %>
+        <%= f.input :student_rsvp_limit, label: 'Student RSVP limit' %>
       </div>
 
       <div class="field">
-        <%= f.label :public_email, 'What email address should users contact you at with questions?' %>
-        <%= f.text_field :public_email, :class => "input-xxlarge" %>
+        <%= f.input :public_email, label: 'What email address should users contact you at with questions?' %>
       </div>
 
       <div class="field">
-        <%= f.label :details, 'General Event Details (some html allowed)' %>
-        <%= f.text_area :details, :rows => 14, :class => "input-xxlarge" %>
+        <%= f.input :details, label: 'General Event Details (some html allowed)', as: :text, input_html: {rows: 14} %>
       </div>
 
       <h3>Post-RSVP Details</h3>
       <p>The following details will be included in the confirmation & reminder emails and will appear at the bottom of the event detail page <em>after</em> the student or volunteer has signed up.</p>
       <div class="field">
-        <%= f.label :volunteer_details, 'Volunteer Details' %>
-        <%= f.text_area :volunteer_details, :rows => 4, :class => "input-xxlarge" %>
+        <%= f.input :volunteer_details, label: 'Volunteer Details', input_html: {rows: 4} %>
       </div>
 
       <div class="field workshop-only">
-        <%= f.label :student_details, 'Student Details' %>
-        <%= f.text_area :student_details, :rows => 4, :class => "input-xxlarge" %>
+        <%= f.input :student_details, label: 'Student Details', input_html: {rows: 4} %>
       </div>
 
       <% if @event.new_record? %>

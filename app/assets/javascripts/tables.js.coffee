@@ -1,6 +1,6 @@
 $(document).ready ->
   $.extend($.fn.dataTable.defaults, {
-    dom: "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+    dom: "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-6'i><'col-md-6'p>>",
     pagingType: "bootstrap",
     pageLength: 50
   })

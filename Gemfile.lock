@@ -47,9 +47,8 @@ GEM
       jquery-rails
       railties
     bcrypt (3.1.7)
-    bootstrap-sass-rails (2.3.2.1)
-      railties (>= 3.1.0)
-      sass-rails (>= 3.1.0)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.2)
     bullet (4.14.0)
       activesupport (>= 3.0.0)
@@ -314,7 +313,7 @@ GEM
       uuidtools
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
-    simple_form (3.0.2)
+    simple_form (3.1.0.rc2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
     slop (3.6.0)
@@ -361,7 +360,7 @@ DEPENDENCIES
   active_hash
   awesome_print
   backbone-on-rails
-  bootstrap-sass-rails (~> 2.3.0)
+  bootstrap-sass
   bullet
   capybara (>= 2.0.1)
   capybara-screenshot
@@ -408,7 +407,7 @@ DEPENDENCIES
   select2-rails
   sentry-raven
   shoulda-matchers
-  simple_form
+  simple_form (= 3.1.0.rc2)
   sqlite3
   terminal-notifier-guard
   thin
